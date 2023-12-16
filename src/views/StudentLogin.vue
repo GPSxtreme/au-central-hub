@@ -1,5 +1,5 @@
 <template>
-   <body>
+  <div class="login">
   <nav class="navbar">
       <a href="https://andhrauniversity.edu.in/"> <img src="https://andhrauniversity.edu.in/Header.png" class="logo"></a>
     </nav>
@@ -19,7 +19,7 @@
 
     <p v-if="error">{{ error }}</p>
   </div>
-</body>
+</div>
 </template>
 
 <script>

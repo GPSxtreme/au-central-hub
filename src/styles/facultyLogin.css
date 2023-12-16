@@ -8,12 +8,13 @@
   justify-content: center;
   align-items: center;
 }
-body {
+.login{
   margin: 0;
   padding: 0;
   height: 100vh;
   overflow: hidden;
   background-position: center;
+  background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)),url(https://images.unsplash.com/photo-1561089489-f13d5e730d72?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 }
 
 .login-container {
