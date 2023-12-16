@@ -8,10 +8,10 @@
     <!-- Main Content -->
     <div class="main-content">
       <button class="portal-btn" @click="goToStudentLogin">
-        Student Portal
+        <span class="button-content">Student Portal</span>
       </button>
       <button class="portal-btn" @click="goToFacultyLogin">
-        Faculty Portal
+        <span class="button-content">Faculty Portal</span>
       </button>
     </div>
   </div>
