@@ -1,13 +1,4 @@
 /* Add your basic styling here */
-.navbar {
-  background-color: #0c052c;
-  position: relative;
-  align-items: center;
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .login{
   margin: 0;
   padding: 0;
