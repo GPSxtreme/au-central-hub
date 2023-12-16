@@ -1,26 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <!-- Global Header (if any) -->
+    <header>
+      <!-- Common header content (if any) -->
+    </header>
+
+    <!-- Main Content (Rendered by Vue Router) -->
+    <router-view></router-view>
+
+    <!-- Global Footer (if any) -->
+    <footer>
+      <!-- Common footer content (if any) -->
+    </footer>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      isAuthenticated: false,
+    };
+  },
+  created() {
+    onAuthStateChanged(auth, (user) => {
+      this.isAuthenticated = !!user;
+    });
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

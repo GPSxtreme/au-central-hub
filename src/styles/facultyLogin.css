@@ -1,0 +1,12 @@
+/* Add your basic styling here */
+.login-container {
+  margin: 20px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input {
+  margin-bottom: 10px;
+}

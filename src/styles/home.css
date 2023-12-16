@@ -1,0 +1,28 @@
+.navbar {
+  background-color: #0056b3;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.portal-btn {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.portal-btn:hover {
+  background-color: #0056b3;
+}
