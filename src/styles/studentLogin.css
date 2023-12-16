@@ -1,15 +1,13 @@
 /* Add your basic styling here */
-.login{
+.login {
   margin: 0;
   padding: 0;
   height: 100vh;
   overflow: hidden;
-  background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)),url(https://images.unsplash.com/photo-1561089489-f13d5e730d72?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-  background-position: center;
 }
 
 .login-container {
- 
+  border: 1px dotted black;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -17,80 +15,50 @@
   width: 400px;
   background: white;
   border-radius: 10px;
-  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  box-shadow: 2.8px 2.8px 0px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 0px rgba(0, 0, 0, 0.028), 12.5px 12.5px 0px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 0px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 0px rgba(0, 0, 0, 0.05), 100px 100px 0px rgba(0, 0, 0, 0.07);
 }
-.login-container h1{
+.login-container h2 {
   text-align: center;
   padding: 20px 0;
   border-bottom: 1px solid silver;
 }
-.login-container form{
+.login-container form {
   padding: 0 40px;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-label {
-  margin-right: 10px;
-}
-
-input {
-  margin-bottom: 10px;
-}
-form .txt_field{
+form .txt_field {
   position: relative;
   border-bottom: 2px solid #adadad;
   margin: 30px 0;
 }
-.txt_field input{
-  width: 60%;
+.txt_field input {
+  width: 100%;
   padding: 0 5px;
-  height: 40px;
+  height: 35px;
   font-size: 16px;
   border: none;
   background: none;
   outline: none;
 }
-.txt_field label{
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  color: #adadad;
-  transform: translateY(-50%);
-  font-size: 16px;
-  pointer-events: none;
-  transition: .5s;
-}
-.txt_field span::before{
-  content: '';
-  position: absolute;
-  top: 40px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #2691d9;
-  transition: .5s;
-}
-.txt_field input:focus ~ label,
-.txt_field input:valid ~ label{
-  top: -5px;
-  color: #2691d9;
-}
-.txt_field input:focus ~ span::before,
-.txt_field input:valid ~ span::before{
-  width: 100%;
-}
-
 .btn {
   position: relative;
   overflow: hidden;
-  height: 3rem;
+  height: 2.5rem;
   padding: 0 2rem;
+  width: 100%;
+  font-size: 18px;
   border-radius: 1.5rem;
   background: #3d3a4e;
-  background-size: 400%;
+  /* background-size: 400%; */
   color: #fff;
   border: none;
-  margin: 5px;
+  margin: 20px auto;
   justify-content: center;
 }
 
@@ -104,7 +72,7 @@ form .txt_field{
 }
 
 .btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

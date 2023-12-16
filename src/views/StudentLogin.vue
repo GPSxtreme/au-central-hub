@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="login-container">
-      <h1>Student Login</h1>
+      <h2>Student Login</h2>
       <form @submit.prevent="onSubmit">
         <div class="txt_field">
           <label for="email">Email</label>

@@ -1,14 +1,14 @@
 <template>
   <div class="login">
     <div class="login-container">
-      <h1>Faculty Login</h1>
+      <h2>Faculty Login</h2>
       <form @submit.prevent="onSubmit">
         <div class="txt_field">
-          <label for="email">Email</label>
+          <p style="font-size: 14px; margin: 0">Email</p>
           <input type="email" id="email" v-model="email" required />
         </div>
         <div class="txt_field">
-          <label for="password">Password</label>
+          <p style="font-size: 14px; margin: 0">Password</p>
           <input type="password" id="password" v-model="password" required />
         </div>
         <button class="btn" type="submit">
