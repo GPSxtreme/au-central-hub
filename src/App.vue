@@ -1,7 +1,10 @@
-<template>
+<template>    
   <div id="app">
     <!-- Global Header (if any) -->
     <header>
+      <nav class="navbar">
+      <a href="https://andhrauniversity.edu.in/"> <img src="https://andhrauniversity.edu.in/Header.png" class="logo"></a>
+    </nav>
       <!-- Common header content (if any) -->
     </header>
 
@@ -9,13 +12,16 @@
     <router-view></router-view>
 
     <!-- Global Footer (if any) -->
-    <footer>
+    <section class="footer">
       <!-- Common footer content (if any) -->
-    </footer>
+    
+      <p>Made with <i class="fa fa-heart"></i> By TechTitans</p>
+    </section>
   </div>
 </template>
 
 <script>
+import "@/styles/app.css";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase";
 
