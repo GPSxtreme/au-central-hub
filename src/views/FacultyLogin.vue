@@ -1,29 +1,34 @@
 <template>
   <div class="login">
-  <nav class="navbar">
-      <a href="https://andhrauniversity.edu.in/"> <img src="https://andhrauniversity.edu.in/Header.png" class="logo"></a>
+    <nav class="navbar">
+      <a href="https://andhrauniversity.edu.in/">
+        <img src="https://andhrauniversity.edu.in/Header.png" class="logo"
+      /></a>
     </nav>
-  <div class="login-container">
-    <h1>Faculty Login</h1>
-    <form @submit.prevent="onSubmit">
-      <div class="txt_field">
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="email" required />
-      </div>
-      <div class="txt_field">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="password" required />
-      </div>
-      <button class="btn" type="submit"> <span class="button-content">Login</span></button>
-    </form>
-    <p v-if="error" class="error">{{ error }}</p>
-  </div>
+    <div class="login-container">
+      <h1>Faculty Login</h1>
+      <form @submit.prevent="onSubmit">
+        <div class="txt_field">
+          <label for="email">Email</label>
+          <input type="email" id="email" v-model="email" required />
+        </div>
+        <div class="txt_field">
+          <label for="password">Password</label>
+          <input type="password" id="password" v-model="password" required />
+        </div>
+        <button class="btn" type="submit">
+          <span class="button-content">Login</span>
+        </button>
+      </form>
+      <p v-if="error" class="error">{{ error }}</p>
+    </div>
   </div>
 </template>
 
 <script>
 import "@/styles/facultyLogin.css";
-import { auth } from "@/firebase"; // Import the auth object
+import { auth } from "../firebase";
+import { getFirestore, doc, getDoc } from "firebase/firestore"; // Import the auth object
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default {
@@ -38,15 +43,43 @@ export default {
   methods: {
     async onSubmit() {
       try {
+        this.error = null;
         // Use Firebase auth to sign in with email and password
-        // we need to implement a checking mechanism to check if the
-        // login credentials belong to a faculty member or not.
         await signInWithEmailAndPassword(auth, this.email, this.password);
-        this.$router.push("/faculty-portal"); // Redirect to student portal
+
+        // Get the current user
+        const user = auth.currentUser;
+        if (user) {
+          const isAdmin = await this.checkAdmin(auth.currentUser.uid);
+          if (isAdmin) {
+            this.$router.push("/faculty-portal");
+          } else {
+            await auth.signOut();
+            alert(
+              "User is not a faculty member.\nPlease use valid credentials"
+            );
+          }
+        }
       } catch (error) {
         // Handle errors here (e.g., wrong password, no user found, etc.)
         this.error = error.message;
         console.error("Login failed:", error);
+      }
+    },
+    async checkAdmin(userId) {
+      try {
+        const db = getFirestore();
+        const docRef = doc(db, `users/faculty/profileData/${userId}`);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          return docSnap.data().isAdmin === true;
+        }
+
+        return false;
+      } catch (error) {
+        console.error("Error checking admin status:", error);
+        return false;
       }
     },
   },
