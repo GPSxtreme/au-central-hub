@@ -1,6 +1,6 @@
 <template>
   <div class="portal-container">
-    <h1>Welcome to the Student Portal!</h1>
+    <h2>Welcome to the Student Portal!</h2>
     <div class="links">
       <router-link to="/student-profile" class="route-link"
         >My Profile</router-link
