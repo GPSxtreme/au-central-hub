@@ -1,6 +1,6 @@
 <template>
   <div class="portal-container">
-    <h1>Welcome to the Faculty Portal!</h1>
+    <h2>Welcome to the Faculty Portal!</h2>
 
     <div class="links">
       <router-link to="/faculty-profile" class="route-link"

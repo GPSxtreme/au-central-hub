@@ -61,6 +61,10 @@ form .txt_field {
   justify-content: center;
 }
 
+.btn:hover {
+  cursor: pointer;
+}
+
 .btn:hover::before {
   transform: scaleX(1);
 }
