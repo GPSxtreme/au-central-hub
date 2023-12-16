@@ -1,64 +1,61 @@
 <template>
-  <div>
-    <h1>Assignments Portal</h1>
-    <h2>Select Subject</h2>
-    <ul>
-      <li
-        v-for="subject in subjects"
-        :key="subject.id"
-        @click="selectSubject(subject.id)"
-      >
-        {{ subject.name }}
-      </li>
-    </ul>
-    <hr />
-  </div>
-  <div v-if="selectedSubject">
-    <h2>Subject Name: {{ selectedSubjectName }}</h2>
-    <h3>Available Assignments</h3>
-
-    <ul v-if="assignments.length > 0">
-      <li
-        v-for="assignment in assignments"
-        :key="assignment.id"
-        @click.self="toggleAssignmentDetails(assignment)"
-      >
-        {{ assignment.name }}
-        <div
-          v-if="selectedAssignment && selectedAssignment.id === assignment.id"
+  <div class="main">
+    <div>
+      <h1>Assignments Portal</h1>
+      <h2>Select Subject</h2>
+      <ul>
+        <li
+          v-for="subject in subjects"
+          :key="subject.id"
+          @click="selectSubject(subject.id)"
         >
-          <br />
-          <table>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Posted On</th>
-              <th>Deadline</th>
-              <th>Status</th>
-              <th>Upload PDF</th>
-            </tr>
-            <tr>
-              <td>{{ assignment.name }}</td>
-              <td>{{ assignment.description }}</td>
-              <td>{{ formatDate(assignment.createdOn) }}</td>
-              <td>{{ formatDate(assignment.endsOn) }}</td>
-              <td>{{ checkSubmissionStatus(assignment) }}</td>
-              <td>
-                <input type="file" v-if="checkSubmissionStatus(assignment)" />
-                <button
-                  v-if="checkSubmissionStatus(assignment)"
-                  @click="uploadPDF($event, assignment)"
-                >
-                  Upload
-                </button>
-              </td>
-            </tr>
-          </table>
-          <!-- Placeholder for future upload button -->
-        </div>
-      </li>
-    </ul>
-    <p v-else>No assignments available.</p>
+          {{ subject.name }}
+        </li>
+      </ul>
+      <hr />
+    </div>
+    <div v-if="selectedSubject">
+      <h2>Subject Name: {{ selectedSubjectName }}</h2>
+      <h3>Available Assignments</h3>
+
+      <table v-if="assignments.length > 0">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Posted On</th>
+          <th>Deadline</th>
+          <th>Status</th>
+          <th>Upload PDF</th>
+        </tr>
+        <tr v-for="assignment in assignments" :key="assignment.id">
+          <td>{{ assignment.name }}</td>
+          <td>{{ assignment.description }}</td>
+          <td>{{ formatDate(assignment.createdOn) }}</td>
+          <td>{{ formatDate(assignment.endsOn) }}</td>
+          <td>
+            <span v-if="checkSubmissionStatus(assignment) === 'Submitted'">
+              Uploaded ({{ getUserFileName(assignment) }})
+            </span>
+            <span v-else>Not Submitted</span>
+          </td>
+          <td style="display: flex; flex-direction: column">
+            <input
+              accept="application/pdf"
+              type="file"
+              @change="uploadPDF($event, assignment)"
+            />
+            <button>
+              {{
+                checkSubmissionStatus(assignment) === "Submitted"
+                  ? "Reupload"
+                  : "Upload"
+              }}
+            </button>
+          </td>
+        </tr>
+      </table>
+      <p v-else>No assignments available.</p>
+    </div>
   </div>
 </template>
 
@@ -71,9 +68,12 @@ import {
   doc,
   getDoc,
   getDocs,
+  updateDoc,
+  arrayUnion,
 } from "firebase/firestore";
 import { auth } from "@/firebase";
-
+import "@/styles/studentAssignments.css";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 export default {
   data() {
     return {
@@ -84,6 +84,7 @@ export default {
       selectedAssignment: null,
       deptId: null,
       sectionId: null,
+      studentProfile: null,
     };
   },
   async created() {
@@ -93,9 +94,9 @@ export default {
     const profileSnap = await getDoc(profileRef);
 
     if (profileSnap.exists()) {
-      const studentProfile = profileSnap.data();
-      const course = studentProfile.course;
-      const section = studentProfile.section;
+      this.studentProfile = profileSnap.data();
+      const course = this.studentProfile.course;
+      const section = this.studentProfile.section;
 
       // Fetch deptId and sectionId based on student's course and section
       const departmentsRef = collection(db, "departments");
@@ -164,16 +165,73 @@ export default {
       const uid = auth.currentUser.uid;
       return assignment.submitted.includes(uid) ? "Submitted" : "Not Submitted";
     },
-    uploadPDF(event, assignment) {
-      console.log(event.InstanceType, assignment.InstanceType);
-      alert("Feature not implemented yet");
-      // Logic to handle PDF upload
-      // Remember to update the 'submitted' array in Firestore after successful upload
+    async uploadPDF(event, assignment) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      // Check if the deadline has passed
+      const deadline = new Date(assignment.endsOn.seconds * 1000);
+      if (new Date() > deadline) {
+        alert("The deadline for this assignment has passed.");
+        return;
+      }
+
+      // Check file size (5 MB limit)
+      const maxFileSize = 5 * 1024 * 1024; // 5 MB
+      if (file.size > maxFileSize) {
+        alert("File size exceeds 5 MB limit.");
+        return;
+      }
+
+      try {
+        const storage = getStorage();
+        const userDocRef = doc(
+          getFirestore(),
+          `users/students/profileData/${auth.currentUser.uid}`
+        );
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (!userDocSnap.exists()) {
+          console.error("User profile not found");
+          return;
+        }
+
+        const regNo = userDocSnap.data().regNo;
+        const fileName = `${regNo}.${file.name.split(".").pop()}`;
+        const storageRef = ref(
+          storage,
+          `assignments/${assignment.id}/${fileName}`
+        );
+
+        // Upload file
+        await uploadBytes(storageRef, file);
+
+        // Update Firestore document after successful upload
+        const assignmentRef = doc(
+          getFirestore(),
+          `departments/${this.deptId}/sections/${this.sectionId}/subjects/${this.selectedSubject}/assignments/${assignment.id}`
+        );
+        await updateDoc(assignmentRef, {
+          submitted: arrayUnion(auth.currentUser.uid),
+        });
+
+        alert("Assignment submitted successfully!");
+      } catch (error) {
+        console.error("Error uploading file: ", error);
+        alert("Error uploading file.");
+      }
     },
     formatDate(timestamp) {
       if (!timestamp) return "";
       const date = timestamp.toDate(); // Convert Firestore timestamp to JavaScript Date object
       return date.toLocaleDateString(); // Format date to readable format (e.g., 'MM/DD/YYYY')
+    },
+    getUserFileName(assignment) {
+      // Assuming the file name format is 'regNo.extension'
+      const regNo = this.studentProfile.regNo;
+      return assignment.submitted.includes(auth.currentUser.uid)
+        ? `${regNo}.pdf`
+        : "";
     },
   },
 };
