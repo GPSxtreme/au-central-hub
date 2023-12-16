@@ -45,6 +45,10 @@
   margin: 20px;
 }
 
+.portal-btn:hover{
+  cursor: pointer;  
+}
+
 .portal-btn:hover::before {
   transform: scaleX(1);
 }
