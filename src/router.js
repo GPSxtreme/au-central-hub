@@ -12,6 +12,7 @@ import StudentAssignments from "./views/StudentAssignments.vue";
 import StudentResults from "./views/StudentResults.vue";
 import StudentAttendance from "./views/StudentAttendance.vue";
 import FacultyProfile from "./views/FacultyProfile.vue";
+import AttendanceManagement from "./views/AttendanceManagement.vue";
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -76,6 +77,12 @@ const router = createRouter({
       path: "/student-attendance",
       name: "StudentAttendance",
       component: StudentAttendance,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/attendance-management",
+      name: "AttendanceManagement",
+      component: AttendanceManagement,
       meta: { requiresAuth: true },
     },
   ],
