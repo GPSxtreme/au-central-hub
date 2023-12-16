@@ -110,9 +110,10 @@ export default {
       }
     },
   },
-  created() {
+  async created() {
     // Load CGPA when the component is created (page is loaded)
-    this.fetchAndStoreCGPA();
+    await this.fetchAndStoreCGPA();
+    this.loadResults("Sem-1");
   },
 };
 </script>
