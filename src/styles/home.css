@@ -1,28 +1,72 @@
 .navbar {
-  background-color: #0056b3;
-  color: white;
-  text-align: center;
+  background-color: #0c052c;
+  position: relative;
+  align-items: center;
   padding: 10px 0;
-}
-
-.main-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+}
+
+.main-content {
+  background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)), url(https://images.unsplash.com/photo-1477281765962-ef34e8bb0967?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 82vh; /* Adjust the height as needed */
 }
 
 .portal-btn {
-  margin: 0 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #3d3a4e;
+  background-size: 400%;
+  color: #fff;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+  margin: 10px;
 }
 
-.portal-btn:hover {
-  background-color: #0056b3;
+.portal-btn:hover::before {
+  transform: scaleX(1);
+}
+
+.portal-btn-content {
+  position: relative;
+}
+
+.portal-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    rgba(150, 93, 233, 1) 10.8%,
+    rgba(99, 88, 238, 1) 94.3%
+  );
+  transition: all 0.475s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+.logo {
+  max-height: 80px; /* Adjust the max height as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
 }
