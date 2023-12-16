@@ -1,17 +1,21 @@
 <template>
-<body>
-  <div>
-    <!-- Main Content -->
-    <div class="main-content">
-      <button class="portal-btn" @click="goToStudentLogin">
-        <span class="button-content">Student Portal</span>
-      </button>
-      <button class="portal-btn" @click="goToFacultyLogin">
-        <span class="button-content">Faculty Portal</span>
-      </button>
+  <body>
+    <div>
+      <!-- Main Content -->
+      <div class="main-content">
+        <img src="../assets/svgs/home-decor.svg" alt="image" />
+        <div class="vl"></div>
+        <div class="btn-container">
+          <button class="portal-btn" @click="goToStudentLogin">
+            <span class="button-content">Student Portal</span>
+          </button>
+          <button class="portal-btn" @click="goToFacultyLogin">
+            <span class="button-content">Faculty Portal</span>
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </template>
 
 <script>
