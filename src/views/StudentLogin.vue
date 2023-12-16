@@ -1,10 +1,5 @@
 <template>
   <div class="login">
-    <nav class="navbar">
-      <a href="https://andhrauniversity.edu.in/">
-        <img src="https://andhrauniversity.edu.in/Header.png" class="logo"
-      /></a>
-    </nav>
     <div class="login-container">
       <h1>Student Login</h1>
       <form @submit.prevent="onSubmit">
