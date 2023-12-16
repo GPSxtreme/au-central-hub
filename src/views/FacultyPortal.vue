@@ -19,7 +19,11 @@
       <router-link to="/attendance-management" class="route-link"
         >Attendance management</router-link
       >
-      <router-link to="/logout" @click="logout" class="route-link"
+      <router-link
+        to="/logout"
+        @click="logout"
+        class="route-link"
+        style="color: red"
         >Logout</router-link
       >
     </div>
