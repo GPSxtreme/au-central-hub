@@ -1,14 +1,17 @@
 <template>
   <div class="profile-container">
     <h1>My Profile</h1>
+    <hr />
     <div v-if="student">
-      <p>Name: {{ student.name }}</p>
-      <p>Reg. No: {{ student.regNo }}</p>
-      <p>Section : {{ student.section }}</p>
-      <p>gender: {{ student.gender }}</p>
-      <p>joining: {{ student.joining }}</p>
-      <p>dob: {{ formatDate(student.dob) }}</p>
-      <p>Course: {{ student.course }}</p>
+      <p><span class="label">Name:</span> {{ student.name }}</p>
+      <p><span class="label">Reg. No:</span> {{ student.regNo }}</p>
+      <p><span class="label">Section :</span> {{ student.section }}</p>
+      <p><span class="label">Gender:</span> {{ student.gender }}</p>
+      <p><span class="label">Joining:</span> {{ student.joining }}</p>
+      <p>
+        <span class="label">Date of birth:</span> {{ formatDate(student.dob) }}
+      </p>
+      <p><span class="label">Course:</span> {{ student.course }}</p>
     </div>
     <div v-else>
       <p>loading...</p>
