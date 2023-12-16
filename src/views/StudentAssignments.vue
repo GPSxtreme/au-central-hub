@@ -3,15 +3,14 @@
     <div>
       <h1>Assignments Portal</h1>
       <h2>Select Subject</h2>
-      <ul>
-        <li
-          v-for="subject in subjects"
-          :key="subject.id"
-          @click="selectSubject(subject.id)"
-        >
-          {{ subject.name }}
-        </li>
-      </ul>
+      <p
+        v-for="subject in subjects"
+        :key="subject.id"
+        @click="selectSubject(subject.id)"
+        class="sub"
+      >
+        {{ subject.name }}
+      </p>
       <hr />
     </div>
     <div v-if="selectedSubject">
