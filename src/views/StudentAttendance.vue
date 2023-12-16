@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <h1>My Attendance</h1>
     <table v-if="attendanceRecords.length">
       <thead>
