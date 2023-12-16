@@ -11,7 +11,6 @@
         target="_blank"
         >College Calendar</a
       >
-      <router-link to="/results">Results</router-link>
       <router-link to="/assignments">Assignments</router-link>
       <router-link to="/attendance-management"
         >Attendance management</router-link
