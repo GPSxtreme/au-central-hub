@@ -1,6 +1,8 @@
 <template>
   <div class="profile-container">
     <h1>My Profile</h1>
+    <hr />
+
     <div v-if="faculty">
       <p>Name: {{ faculty.name }}</p>
       <p>Is teaching staff: {{ faculty.isTeaching ? "Yes" : "No" }}</p>
