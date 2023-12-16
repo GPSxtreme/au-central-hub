@@ -1,10 +1,10 @@
 <template>
+<body>
   <div>
     <!-- Navbar -->
     <nav class="navbar">
-      <h1>Andhra University</h1>
+      <a href="https://andhrauniversity.edu.in/"> <img src="https://andhrauniversity.edu.in/Header.png" class="logo"></a>
     </nav>
-
     <!-- Main Content -->
     <div class="main-content">
       <button class="portal-btn" @click="goToStudentLogin">
@@ -15,6 +15,7 @@
       </button>
     </div>
   </div>
+</body>
 </template>
 
 <script>
