@@ -29,3 +29,47 @@
   color: white;
   transform: scale(105%);
 }
+
+.eventScroller {
+  width: fit-content;
+  height: 320px;
+  padding: 20px 400px;
+  margin-bottom: 100px;
+}
+
+.eventScroller ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.eventScroller ul li{
+  list-style: none;
+  line-height: 1.6em;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  margin: 12px 0;
+  text-align: justify;
+}
+
+:host([direction="up"]), :host([direction="down"]) {
+  overflow: initial;
+  overflow-y: hidden;
+  white-space: initial;
+}
+
+.eventScroller ul li a{
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.eventsHead{
+  color: red;
+  padding-top: 60px;
+}
