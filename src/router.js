@@ -11,6 +11,7 @@ import StudentProfile from "./views/StudentProfile.vue";
 import StudentAssignments from "./views/StudentAssignments.vue";
 import StudentResults from "./views/StudentResults.vue";
 import StudentAttendance from "./views/StudentAttendance.vue";
+import FacultyProfile from "./views/FacultyProfile.vue";
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -51,6 +52,12 @@ const router = createRouter({
       path: "/student-profile",
       name: "StudentProfile",
       component: StudentProfile,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/faculty-profile",
+      name: "FacultyProfile",
+      component: FacultyProfile,
       meta: { requiresAuth: true },
     },
     {
