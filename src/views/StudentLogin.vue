@@ -1,25 +1,29 @@
 <template>
   <div class="login">
-  <nav class="navbar">
-      <a href="https://andhrauniversity.edu.in/"> <img src="https://andhrauniversity.edu.in/Header.png" class="logo"></a>
+    <nav class="navbar">
+      <a href="https://andhrauniversity.edu.in/">
+        <img src="https://andhrauniversity.edu.in/Header.png" class="logo"
+      /></a>
     </nav>
-  <div class="login-container">
-    <h1>Student Login</h1>
-    <form @submit.prevent="onSubmit">
-      <div class="txt_field">
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="email" required />
-      </div>
-      <div class="txt_field">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="password" required />
-      </div>
-      <button class="btn" type="submit"><span class="button-content">Login</span></button>
-    </form>
+    <div class="login-container">
+      <h1>Student Login</h1>
+      <form @submit.prevent="onSubmit">
+        <div class="txt_field">
+          <label for="email">Email</label>
+          <input type="email" id="email" v-model="email" required />
+        </div>
+        <div class="txt_field">
+          <label for="password">Password</label>
+          <input type="password" id="password" v-model="password" required />
+        </div>
+        <button class="btn" type="submit">
+          <span class="button-content">Login</span>
+        </button>
+      </form>
 
-    <p v-if="error">{{ error }}</p>
+      <p v-if="error">{{ error }}</p>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -39,6 +43,7 @@ export default {
   methods: {
     async onSubmit() {
       try {
+        this.error = null;
         // Use Firebase auth to sign in with email and password
         await signInWithEmailAndPassword(auth, this.email, this.password);
 
@@ -54,10 +59,8 @@ export default {
             this.$router.push("/student-portal");
           } else {
             // If the user is an admin, perform a logout
-            this.$router.push("/student-login");
             await auth.signOut();
-            alert("User is not a Student!!!");
-            console.log("User is an admin. Logging out.");
+            alert("User is not a student.\nPlease use valid credentials");
           }
         }
       } catch (error) {
