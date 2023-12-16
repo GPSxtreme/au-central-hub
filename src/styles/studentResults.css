@@ -1,0 +1,8 @@
+.main {
+  margin: 30px;
+}
+.semesters {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
