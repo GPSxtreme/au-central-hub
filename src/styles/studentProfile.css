@@ -1,3 +1,22 @@
 .profile-container {
-  margin: 20px;
+  text-align: center;
+  margin: 30px auto;
+  min-height: 80vh;
+}
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+hr {
+  width: 30%;
+}
+
+p {
+  font-size: 22px;
+  font-weight: 500;
+}
+.label {
+  font-weight: 500;
 }
