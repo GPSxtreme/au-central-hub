@@ -7,7 +7,7 @@
       <p>Section : {{ student.section }}</p>
       <p>gender: {{ student.gender }}</p>
       <p>joining: {{ student.joining }}</p>
-      <p>dob: {{ student.dob }}</p>
+      <p>dob: {{ formatDate(student.dob) }}</p>
       <p>Course: {{ student.course }}</p>
     </div>
     <div v-else>
@@ -39,6 +39,13 @@ export default {
     } else {
       console.log("No such document!");
     }
+  },
+  methods: {
+    formatDate(timestamp) {
+      if (!timestamp) return "";
+      const date = timestamp.toDate(); // Convert Firestore timestamp to JavaScript Date object
+      return date.toLocaleDateString(); // Format date to readable format (e.g., 'MM/DD/YYYY')
+    },
   },
 };
 </script>
