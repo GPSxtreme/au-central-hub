@@ -9,29 +9,40 @@
 }
 
 .main-content {
-  background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)), url(https://images.unsplash.com/photo-1477281765962-ef34e8bb0967?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-  background-size: cover;
-  background-position: center;
   overflow: hidden;
-  padding: 20px;
+  padding: 40px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 90%;
   justify-content: center;
-  align-items: center;
+  margin: 0 auto;
   height: 82vh; /* Adjust the height as needed */
 }
-
+.vl {
+  border-left: 4px solid rgba(0, 0, 0, 0.168);
+  height: 90%;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
+}
 .portal-btn {
   position: relative;
   overflow: hidden;
-  height: 3rem;
-  padding: 0 2rem;
-  border-radius: 1.5rem;
-  background: #3d3a4e;
+  height: 3.5rem;
+  font-size: 22px;
+  padding: 0 7rem;
+  border-radius: 18px;
+  background: #76b8f1;
   background-size: 400%;
   color: #fff;
   border: none;
-  margin: 10px;
+  margin: 20px;
 }
 
 .portal-btn:hover::before {
@@ -46,7 +57,7 @@
   z-index: 1;
 }
 .portal-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -55,18 +66,13 @@
   width: 100%;
   height: inherit;
   border-radius: inherit;
-  background: linear-gradient(
-    82.3deg,
-    rgba(150, 93, 233, 1) 10.8%,
-    rgba(99, 88, 238, 1) 94.3%
-  );
+  background: #0b052a;
   transition: all 0.475s;
 }
 
 body {
   margin: 0;
   padding: 0;
-  
 }
 
 .logo {
