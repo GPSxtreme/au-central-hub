@@ -3,19 +3,26 @@
     <h1>Welcome to the Faculty Portal!</h1>
 
     <div class="links">
-      <router-link to="/faculty-profile">My Profile</router-link>
-      <router-link to="/my-class">My class</router-link>
-      <router-link to="/events">Events</router-link>
+      <router-link to="/faculty-profile" class="route-link"
+        >My Profile</router-link
+      >
+      <router-link to="/my-class" class="route-link">My class</router-link>
+      <router-link to="/events" class="route-link">Events</router-link>
       <a
         href="https://www.andhrauniversity.edu.in/img/news/calau.pdf"
         target="_blank"
+        class="route-link"
         >College Calendar</a
       >
-      <router-link to="/assignments">Assignments</router-link>
-      <router-link to="/attendance-management"
+      <router-link to="/assignments" class="route-link"
+        >Assignments</router-link
+      >
+      <router-link to="/attendance-management" class="route-link"
         >Attendance management</router-link
       >
-      <router-link to="/logout" @click="logout">Logout</router-link>
+      <router-link to="/logout" @click="logout" class="route-link"
+        >Logout</router-link
+      >
     </div>
   </div>
 </template>
