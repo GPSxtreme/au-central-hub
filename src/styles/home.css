@@ -41,7 +41,10 @@
 .portal-btn-content {
   position: relative;
 }
-
+.button-content {
+  position: relative;
+  z-index: 1;
+}
 .portal-btn::before {
   content: '';
   position: absolute;

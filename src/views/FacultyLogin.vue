@@ -1,19 +1,24 @@
 <template>
+  <body>
+  <nav class="navbar">
+      <a href="https://andhrauniversity.edu.in/"> <img src="https://andhrauniversity.edu.in/Header.png" class="logo"></a>
+    </nav>
   <div class="login-container">
-    <h2>Faculty Login</h2>
+    <h1>Faculty Login</h1>
     <form @submit.prevent="onSubmit">
-      <div>
-        <label for="email">Email:</label>
+      <div class="txt_field">
+        <label for="email">Email</label>
         <input type="email" id="email" v-model="email" required />
       </div>
-      <div>
-        <label for="password">Password:</label>
+      <div class="txt_field">
+        <label for="password">Password</label>
         <input type="password" id="password" v-model="password" required />
       </div>
-      <button type="submit">Login</button>
+      <button class="btn" type="submit"> <span class="button-content">Login</span></button>
     </form>
     <p v-if="error" class="error">{{ error }}</p>
   </div>
+  </body>
 </template>
 
 <script>
