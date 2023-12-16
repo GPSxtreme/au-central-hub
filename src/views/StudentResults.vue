@@ -30,7 +30,8 @@
 
     <div v-if="selectedSemester">
       <h2>{{ selectedSemester }}</h2>
-      <!-- Display results in a table -->
+      <template v-if="results && Object.keys(results).length > 0">
+        <!-- Display results in a table -->
       <table>
         <thead>
           <tr>
@@ -54,7 +55,11 @@
       <div>
         <h2><strong>GPA:</strong> {{ results.gpa }}</h2>
       </div>
-
+      </template>
+      <template v-else>
+        <h3>No records found for {{ selectedSemester }}.</h3>
+      </template>
+      
     </div>
 
     <div class="cgpa">
@@ -70,7 +75,7 @@ import {
   collection,
   query,
   onSnapshot,
-  getDocs
+  getDocs,
 } from "firebase/firestore";
 import { auth } from "@/firebase";
 export default {
@@ -81,6 +86,7 @@ export default {
       results: [],
       docId: null,
       cgpa: null,
+      msg: null,
     };
   },
   methods: {
@@ -106,9 +112,10 @@ export default {
         db,
         `users/students/profileData/${userId}/results/${this.docId}/${semester}`
       );
-
-      const q = query(resultsRef);
-      onSnapshot(q, (querySnapshot) => {
+      const semesterCollectionExists = await getDocs(resultsRef);
+      if (semesterCollectionExists) {
+        const q = query(resultsRef);
+        onSnapshot(q, (querySnapshot) => {
         const data = [];
         querySnapshot.forEach((doc) => {
           data.push({...doc.data() });
@@ -116,6 +123,12 @@ export default {
         this.selectedSemester = semester;
         this.results = data[0];
       });
+      }
+      else{
+        this.msg="No records found!!"
+      }
+
+      
     },
   },
   created() {
