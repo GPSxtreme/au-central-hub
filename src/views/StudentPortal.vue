@@ -6,7 +6,11 @@
       <router-link to="/student-profile">My Profile</router-link>
       <router-link to="/student-attendance">My Attendance</router-link>
       <router-link to="/events">Events</router-link>
-      <router-link to="/college-calendar">College Calendar</router-link>
+      <a
+        href="https://www.andhrauniversity.edu.in/img/news/calau.pdf"
+        target="_blank"
+        >College Calendar</a
+      >
       <router-link to="/student-results">Results</router-link>
       <router-link to="/student-assignments">Assignments</router-link>
       <router-link to="/logout" @click="logout">Logout</router-link>
