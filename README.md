@@ -71,7 +71,7 @@ Contributions to the project are welcome. Please ensure to follow the project gu
 
 ## License
 
-[MIT License](LICENSE.md)
+[MIT License](LICENSE)
 
 ## Contact
 
