@@ -5,6 +5,7 @@
 
 .container {
   max-width: 500px;
+  height: fit-content;
   margin: 0 auto;
   padding: 20px;
   text-align: center;

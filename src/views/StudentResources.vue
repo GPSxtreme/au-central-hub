@@ -1,65 +1,71 @@
 <template>
-  <h3>RESOURCES</h3>
-  <div class="container">
-    <div class="content">
-      <div>
-        <label for="department">Select Department:</label>
-        <select
-          id="department"
-          v-model="selectedDepartment"
-          @change="fetchSections"
-        >
-          <option disabled value="">Please select one</option>
-          <option v-for="dept in departments" :key="dept.id" :value="dept.id">
-            {{ dept.deptName }}
-          </option>
-        </select>
-      </div>
-
-      <!-- Section Selection -->
-      <div v-if="sections.length > 0">
-        <label for="section">Select Section:</label>
-        <select id="section" v-model="selectedSection" @change="fetchSubjects">
-          <option disabled value="">Please select one</option>
-          <option
-            v-for="section in sections"
-            :key="section.id"
-            :value="section.id"
+  <div style="height: 100vh">
+    <h3>RESOURCES</h3>
+    <div class="container">
+      <div class="content">
+        <div>
+          <label for="department">Select Department:</label>
+          <select
+            id="department"
+            v-model="selectedDepartment"
+            @change="fetchSections"
           >
-            {{ section.name }}
-          </option>
-        </select>
-      </div>
-      <!-- Subject Selection -->
-      <div v-if="subjects.length > 0">
-        <label for="subject">Select Subject:</label>
-        <select id="subject" v-model="selectedSubject">
-          <option disabled value="">Please select one</option>
-          <option
-            v-for="subject in subjects"
-            :key="subject.id"
-            :value="subject.id"
-          >
-            {{ subject.name }}
-          </option>
-        </select>
-      </div>
-    </div>
-    <button
-      v-if="selectedDepartment && selectedSection && selectedSubject"
-      @click="viewResources"
-      class="upload-button"
-    >
-      View Resources
-    </button>
+            <option disabled value="">Please select one</option>
+            <option v-for="dept in departments" :key="dept.id" :value="dept.id">
+              {{ dept.deptName }}
+            </option>
+          </select>
+        </div>
 
-    <!-- List of Resources -->
-    <div v-if="resources.length">
-      <ul>
-        <li v-for="resource in resources" :key="resource.name">
-          <a :href="resource.url" target="_blank">{{ resource.name }}</a>
-        </li>
-      </ul>
+        <!-- Section Selection -->
+        <div v-if="sections.length > 0">
+          <label for="section">Select Section:</label>
+          <select
+            id="section"
+            v-model="selectedSection"
+            @change="fetchSubjects"
+          >
+            <option disabled value="">Please select one</option>
+            <option
+              v-for="section in sections"
+              :key="section.id"
+              :value="section.id"
+            >
+              {{ section.name }}
+            </option>
+          </select>
+        </div>
+        <!-- Subject Selection -->
+        <div v-if="subjects.length > 0">
+          <label for="subject">Select Subject:</label>
+          <select id="subject" v-model="selectedSubject">
+            <option disabled value="">Please select one</option>
+            <option
+              v-for="subject in subjects"
+              :key="subject.id"
+              :value="subject.id"
+            >
+              {{ subject.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <button
+        v-if="selectedDepartment && selectedSection && selectedSubject"
+        @click="viewResources"
+        class="upload-button"
+      >
+        View Resources
+      </button>
+
+      <!-- List of Resources -->
+      <div v-if="resources.length">
+        <ul>
+          <li v-for="resource in resources" :key="resource.name">
+            <a :href="resource.url" target="_blank">{{ resource.name }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
