@@ -19,6 +19,9 @@
       <router-link to="/resource-upload" class="route-link"
         >Resources Upload</router-link
       >
+      <router-link to="/resource-upload" class="route-link"
+        >Resources Upload</router-link
+      >
       <router-link to="/attendance-management" class="route-link"
         >Attendance management</router-link
       >

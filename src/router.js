@@ -18,6 +18,7 @@ import AssignmentManagement from "./views/AssignmentManagement.vue";
 import ViewAssignments from "./views/ViewAssignments.vue";
 import ResourceUpload from "./views/ResourceUpload.vue";
 import CreateAssignments from "./views/CreateAssignments.vue";
+import StudentResources from "./views/StudentResources.vue";
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -36,6 +37,11 @@ const router = createRouter({
       path: "/student-login",
       name: "StudentLogin",
       component: StudentLogin,
+    },
+    {
+      path: "/student-resources",
+      name: "StudentResources",
+      component: StudentResources,
     },
     {
       path: "/faculty-login",
