@@ -236,4 +236,9 @@ ul {
 li {
   text-decoration: none;
 }
+
+h3 {
+  text-align: center;
+  align-items: center;
+}
 </style>
