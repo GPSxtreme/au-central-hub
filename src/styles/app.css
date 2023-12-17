@@ -1,21 +1,27 @@
-.navbar{
-background-color: #0c052c;
-position: relative;
-align-items: center;
-padding: 10px 0;
-display: flex;
-justify-content: center;
-align-items: center;
+.navbar {
+  background-color: #0c052c;
+  position: relative;
+  align-items: center;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.footer{
-    width: 100%;
-    text-align: center;
-    padding: 30px 0px;
-    background-color: #0c052c;
-    color: aliceblue;
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 30px 0px;
+  background-color: #0c052c;
+  color: aliceblue;
 }
 
-*{
-    font-family: 'Open Sans', sans-serif;
+.backBtn {
+  background: transparent;
+  top: 20px;
+  left: 20px;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
 }
