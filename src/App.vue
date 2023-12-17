@@ -1,10 +1,12 @@
-<template>    
+<template>
   <div id="app">
     <!-- Global Header (if any) -->
     <header>
       <nav class="navbar">
-      <a href="https://andhrauniversity.edu.in/"> <img src="https://andhrauniversity.edu.in/Header.png" class="logo"></a>
-    </nav>
+        <a href="https://andhrauniversity.edu.in/" target="_blank">
+          <img src="https://andhrauniversity.edu.in/Header.png" class="logo"
+        /></a>
+      </nav>
       <!-- Common header content (if any) -->
     </header>
 
@@ -14,7 +16,7 @@
     <!-- Global Footer (if any) -->
     <section class="footer">
       <!-- Common footer content (if any) -->
-    
+
       <p>Made with <i class="fa fa-heart"></i> By TechTitans</p>
     </section>
   </div>
