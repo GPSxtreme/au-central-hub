@@ -57,8 +57,7 @@
     <div v-if="resources.length">
       <ul>
         <li v-for="resource in resources" :key="resource.name">
-          {{ resource.name }}
-          <a :href="resource.url" target="_blank">Download</a>
+          <a :href="resource.url" target="_blank">{{ resource.name }}</a>
         </li>
       </ul>
     </div>
@@ -228,5 +227,13 @@ button:hover {
 }
 .btns {
   margin-top: 30px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  text-decoration: none;
 }
 </style>
