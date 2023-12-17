@@ -164,7 +164,20 @@ export default {
       });
     },
     createAssignment() {
-      // Pass selectedSubject along with department and section
+      const selectedSubject = this.subjects.find(
+        (subject) => subject.id === this.selectedSubject
+      );
+      this.selectedSubjectName = selectedSubject ? selectedSubject.name : "";
+      const params = {
+        selectedDepartmentId: this.selectedDepartment,
+        selectedSectionId: this.selectedSection,
+        selectedSubjectId: this.selectedSubject,
+        selectedSubjectName: this.selectedSubjectName,
+      };
+      this.$router.push({
+        name: "CreateAssignments",
+        params: params,
+      });
     },
   },
   watch: {
