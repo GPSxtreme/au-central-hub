@@ -22,7 +22,13 @@
           <td>{{ formatDate(assignment.endsOn) }}</td>
           <td>{{ assignment.submitted.length }}</td>
           <td>
-            <button @click="viewDetails(assignment)">View Details</button>
+            <button
+              @click="viewDetails(assignment)"
+              v-if="assignment.submitted.length > 0"
+            >
+              View Details
+            </button>
+            <span v-else> none </span>
           </td>
         </tr>
       </tbody>
