@@ -16,6 +16,7 @@ import AttendanceManagement from "./views/AttendanceManagement.vue";
 import FacultyClasses from "./views/FacultyClasses.vue";
 import AssignmentManagement from "./views/AssignmentManagement.vue";
 import ViewAssignments from "./views/ViewAssignments.vue";
+import ResourceUpload from "./views/ResourceUpload.vue";
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -50,6 +51,12 @@ const router = createRouter({
       path: "/faculty-portal",
       name: "FacultyPortal",
       component: FacultyPortal,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/resource-upload",
+      name: "ResourceUpload",
+      component: ResourceUpload,
       meta: { requiresAuth: true },
     },
     {

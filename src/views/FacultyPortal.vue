@@ -13,7 +13,15 @@
         class="route-link"
         >College Calendar</a
       >
-      <router-link to="/assignment-management" class="route-link"
+      <router-link
+        to="/assignment-management"
+        class="route-link"
+        <router-link
+        to="/resource-upload"
+        class="route-link"
+        >Resources Upload</router-link
+      >
+      <router-link to="/assignments" class="route-link"
         >Assignments</router-link
       >
       <router-link to="/attendance-management" class="route-link"
