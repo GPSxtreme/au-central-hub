@@ -12,7 +12,7 @@
       <tbody>
         <tr v-for="(record, index) in attendanceRecords" :key="index">
           <td>{{ index + 1 }}</td>
-          <td>{{ record.date }}</td>
+          <td>{{ formatDate(record.date) }}</td>
           <td>{{ record.status }}</td>
         </tr>
       </tbody>
@@ -61,6 +61,13 @@ export default {
         };
       });
     });
+  },
+  methods: {
+    formatDate(timestamp) {
+      if (!timestamp) return "";
+      const date = timestamp.toDate(); // Convert Firestore timestamp to JavaScript Date object
+      return date.toLocaleDateString(); // Format date to readable format (e.g., 'MM/DD/YYYY')
+    },
   },
 };
 </script>
