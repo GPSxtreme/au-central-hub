@@ -17,6 +17,7 @@ import FacultyClasses from "./views/FacultyClasses.vue";
 import AssignmentManagement from "./views/AssignmentManagement.vue";
 import ViewAssignments from "./views/ViewAssignments.vue";
 import ResourceUpload from "./views/ResourceUpload.vue";
+import CreateAssignments from "./views/CreateAssignments.vue";
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -111,6 +112,12 @@ const router = createRouter({
       path: "/view-assignments/:selectedDepartmentId/:selectedSectionId/:selectedSubjectId/:selectedSubjectName",
       name: "ViewAssignments",
       component: ViewAssignments,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/create-assignments/:selectedDepartmentId/:selectedSectionId/:selectedSubjectId/:selectedSubjectName",
+      name: "CreateAssignments",
+      component: CreateAssignments,
       meta: { requiresAuth: true },
     },
   ],
