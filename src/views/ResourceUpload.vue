@@ -212,3 +212,46 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.main {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  margin-top: 40px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+select {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.content {
+  margin-top: 30px;
+}
+.btns {
+  margin-top: 30px;
+}
+</style>
