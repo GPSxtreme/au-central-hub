@@ -37,7 +37,7 @@
             </span>
             <span v-else>Not Submitted</span>
           </td>
-          <td style="display: flex; flex-direction: column">
+          <td style="display: flex; flex-direction: column; gap: 5px">
             <input
               accept="application/pdf"
               type="file"
@@ -235,3 +235,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.main {
+  margin: 30px;
+}
+hr {
+  width: 100%;
+}
+.sub {
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+}
+</style>
