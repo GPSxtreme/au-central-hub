@@ -13,13 +13,11 @@ View hosted demo site : [au-central-hub](https://au-central-hub.vercel.app/)
 Student portal:
 
 email: <prudhvisuraaj@gmail.com>
-
 password : asdf1234$
 
 Faculty portal:
 
 email: <ramasravan007@gmail.com>
-
 password: asdf1234$
 
 ## Features
