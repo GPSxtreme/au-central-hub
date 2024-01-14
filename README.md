@@ -1,10 +1,21 @@
 # Au central hub
 
-### Connect 2k24 hackathon winner 🥇
+## Connect 2k24 hackathon winner 🥇
 
 ## Overview
 
 This web application is designed as a centralized academic platform for Andhra University. It aims to streamline the academic workflow, promote transparency and accessibility, and enhance the overall academic experience for students and faculty.
+
+View hosted demo site : [au-central-hub](https://au-central-hub.vercel.app/)
+
+**Login credentials** :
+Student portal:
+email: <prudhvisuraaj@gmail.com>
+password : asdf1234$
+
+Faculty portal:
+email: <ramasravan007@gmail.com>
+password: asdf1234$
 
 ## Features
 
